@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Telegram Media Downloader</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="panel">
+      <header class="header">
+        <div>
+          <h1>Telegram Downloader</h1>
+          <p id="pageStatus">Open a Telegram Web chat.</p>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Media types">
+        <label><input id="images" type="checkbox" checked> Photos</label>
+        <label><input id="videos" type="checkbox" checked> Videos</label>
+        <label><input id="audio" type="checkbox" checked> Audio</label>
+        <label><input id="documents" type="checkbox" checked> Documents</label>
+      </section>
+
+      <section class="settings" aria-label="Download settings">
+        <label>
+          Max files
+          <input id="maxFiles" type="number" min="1" max="2000" value="300">
+        </label>
+        <label>
+          Delay
+          <select id="delayMs">
+            <option value="250">Fast</option>
+            <option value="450" selected>Normal</option>
+            <option value="900">Gentle</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="stats" aria-live="polite">
+        <div><span id="found">0</span><small>found</small></div>
+        <div><span id="downloaded">0</span><small>saved</small></div>
+        <div><span id="failed">0</span><small>failed</small></div>
+      </section>
+
+      <div class="actions">
+        <button id="startButton" type="button">Download</button>
+        <button id="stopButton" type="button" disabled>Stop</button>
+      </div>
+
+      <p id="message" class="message"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

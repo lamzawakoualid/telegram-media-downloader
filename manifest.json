@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Telegram Media Downloader",
+  "description": "Download visible photos, videos, documents, and audio from Telegram Web chats.",
+  "version": "1.0.0",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://web.telegram.org/*"
+  ],
+  "action": {
+    "default_title": "Telegram Media Downloader",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "service_worker": "background.js"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "telegram-media-downloader@example.com",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://web.telegram.org/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
